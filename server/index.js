@@ -1,4 +1,6 @@
 const express = require('express');
+const db = require('./config/connection');
+const path = require('path');
 
 const app = express();
 
@@ -16,6 +18,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 
-app.listen(PORT, () => {
+db.once('open', () => {
+  app.listen(PORT, () => {
     console.log(`API is listening on Port ${PORT}`);
-});
+  });
+})
