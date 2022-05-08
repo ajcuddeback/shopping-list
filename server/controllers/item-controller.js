@@ -4,7 +4,7 @@ module.exports = {
     async getAllItems(req, res) {
         const items = await Items.find({});
 
-        return items;
+        res.json(items);
     },
 
     async addItem(req, res) {
@@ -14,7 +14,7 @@ module.exports = {
             return res.status(500).json({ "Message": "Failed to create item" });
         }
 
-        return response; 
+        res.json(response); 
     },
 
     async updateItem(req, res) {
@@ -24,7 +24,7 @@ module.exports = {
             return res.status(500).json({ "Message": "Failed to update item" });
         }
 
-        return response;
+        res.json(response);
     }, 
     
     async markUnMarkBought(req, res) {
@@ -34,7 +34,7 @@ module.exports = {
             return res.status(500).json({ "Message": "Failed update bought status" });
         }
 
-        return response;
+        res.json(response);
     },
 
     async deleteItem(req, res) {
@@ -44,6 +44,6 @@ module.exports = {
             return res.status(500).json({ "Message": "Failed to delete item" });
         }
 
-        return response;
+        res.json(response);
     }
 }
