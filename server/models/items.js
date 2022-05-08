@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
 const itemSchema = new Schema({
     item_name: {
@@ -10,7 +10,13 @@ const itemSchema = new Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+
+},
+{
+    timestamps: true
 });
 
-module.exports = itemSchema;
+const Items = model('Items', itemSchema);
+
+module.exports = Items;
