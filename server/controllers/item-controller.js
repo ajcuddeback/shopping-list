@@ -28,7 +28,7 @@ module.exports = {
     }, 
     
     async markUnMarkBought(req, res) {
-        const response = await Items.updateOn({ _id: req.params.id }, { is_bought: req.body.is_bought });
+        const response = await Items.updateOne({ _id: req.params.id }, { is_bought: req.body.is_bought });
 
         if(!response) {
             return res.status(500).json({ "Message": "Failed update bought status" });
